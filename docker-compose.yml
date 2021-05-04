@@ -1,0 +1,16 @@
+version: '2'
+services:
+  users-service:
+    image: react-node-backend:2.0
+    container_name: users-service
+    mem_limit: 512M
+    environment:
+      - NODE_ENV=local
+      - APP_PORT=3080
+      - MONGODB_HOST=host.docker.internal
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=mongo-test
+      - MONGODB_USERNAME=""
+      - MONGODB_PASSWORD=""
+    ports:
+      - 3080:3080

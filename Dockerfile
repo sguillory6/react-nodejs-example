@@ -1,14 +1,17 @@
-FROM node:10 AS ui-build
-WORKDIR /usr/src/app
-COPY my-app/ ./my-app/
-RUN cd my-app && npm install && npm run build
-
-FROM node:10 AS server-build
+FROM node:14
 WORKDIR /root/
-COPY --from=ui-build /usr/src/app/my-app/build ./my-app/build
 COPY api/package*.json ./api/
 RUN cd api && npm install
+COPY api/config.js ./api/
+COPY api/connection.js ./api/
 COPY api/server.js ./api/
+COPY api/User.model.js ./api/
+
+ENV MONGODB_HOST localhost
+ENV MONGODB_PORT 27017
+ENV MONGODB_DATABASE mongo-test
+ENV MONGODB_USERNAME ""
+ENV MONGODB_PASSWORD ""
 
 EXPOSE 3080
 

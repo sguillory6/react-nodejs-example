@@ -4,7 +4,7 @@
   "description": "example project react with nodejs",
   "main": "server.js",
   "scripts": {
-    "start": "node server.bundle.js",
+    "start": "NODE_ENV=local node server.js",
     "build": "webpack",
     "dev": "nodemon ./server.js localhost 3080"
   },
@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/bbachi/react-nodejs-example#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^1.0.4"
+    "http-proxy-middleware": "^1.0.4",
+    "mongoose": "^5.12.2"
   },
   "devDependencies": {
     "del": "^5.1.0",
